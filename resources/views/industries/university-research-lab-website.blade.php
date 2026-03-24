@@ -10,119 +10,203 @@
 
 	<section class="infopage_head industry_head main_service" aria-labelledby="industry-head-title" data-header="dark">
 		<div class="inner">
-			<h1 id="industry-head-title">대학·연구실 홈페이지 제작, <br class="pc_vw">홈페이지코리아는 지식의 가치까지 높입니다. </h1>
-			<p class="tb">27년 업력의 홈페이지코리아가 대학·연구 행정의 <br class="pc_vw">모든 과정을 디지털로 전환합니다.</p>
-			<div class="btns flex_center">
+			<h1 id="industry-head-title" class="mojo_aos">대학·연구실 홈페이지 제작, <br class="pc_vw">홈페이지코리아는 지식의 가치까지 높입니다. </h1>
+			<p class="tb mojo_aos">27년 업력의 홈페이지코리아가 대학·연구 행정의 <br class="pc_vw">모든 과정을 디지털로 전환합니다.</p>
+			<div class="btns flex_center mojo_aos">
 				<a href="/portfolio/" class="btn_link slim">포트폴리오 보러가기</a>
 				<a href="/contact/" class="btn_link slim">프로젝트 문의하기</a>
 			</div>
-			<div class="flex_center">
-				<div class="img"><img src="/images/img_industry_a01.jpg" alt=""></div>
+			<div class="flex_center mojo_aos">
+				<div class="img"><img src="/images/img_industry_e01.jpg" alt=""></div>
 			</div>
 		</div>
-		<div class="marquee_banner">
+		<div class="marquee_banner mojo_aos">
 			<ul class="slide" aria-label="주요 고객사 목록">
-				<li><img src="/images/main_service_01.svg" alt="United Nations"></li>
-				<li><img src="/images/main_service_02.svg" alt="서울대학교 농생명과학공동기기원"></li>
-				<li><img src="/images/main_service_03.svg" alt="파크랜드"></li>
-				<li><img src="/images/main_service_04.svg" alt="국립스포츠박물관"></li>
-				<li><img src="/images/main_service_05.svg" alt="KB부동산신탁"></li>
-				<li><img src="/images/main_service_06.svg" alt="PARADISE CITY"></li>
-				<li><img src="/images/main_service_07.svg" alt="CJ Innovation"></li>
-				<li><img src="/images/main_service_08.svg" alt="한양대학교"></li>
-				<li><img src="/images/main_service_09.svg" alt="세종대학교"></li>
+				<li><img src="/images/main_service_a01.svg" alt="United Nations" title="United Nations"></li>
+				<li><img src="/images/main_service_a02.svg" alt="서울대학교 농생명과학공동기기원" title="서울대학교 농생명과학공동기기원"></li>
+				<li><img src="/images/main_service_a03.svg" alt="파크랜드" title="파크랜드"></li>
+				<li><img src="/images/main_service_a04.svg" alt="국립스포츠박물관" title="국립스포츠박물관"></li>
+				<li><img src="/images/main_service_a05.svg" alt="KB부동산신탁" title="KB부동산신탁"></li>
+				<li><img src="/images/main_service_a06.svg" alt="PARADISE CITY" title="PARADISE CITY"></li>
+				<li><img src="/images/main_service_a07.svg" alt="CJ Innovation" title="CJ Innovation"></li>
+				<li><img src="/images/main_service_a08.svg" alt="한양대학교" title="한양대학교"></li>
+				<li><img src="/images/main_service_a09.svg" alt="세종대학교" title="세종대학교"></li>
+				<li><img src="/images/main_service_b01.png" alt="KOREAN AIR" title="KOREAN AIR"></li>
+				<li><img src="/images/main_service_b02.png" alt="GS 글로벌" title="GS 글로벌"></li>
+				<li><img src="/images/main_service_b03.png" alt="GS 에너지" title="GS 에너지"></li>
+				<li><img src="/images/main_service_b04.svg" alt="GS 파워" title="GS 파워"></li>
+				<li><img src="/images/main_service_b05.svg" alt="OMRON" title="OMRON"></li>
+				<li><img src="/images/main_service_b06.svg" alt="국민체육진흥공단" title="국민체육진흥공단"></li>
 			</ul>
 		</div>
-		<div class="inner">
-			<div class="bg_gradient"></div>
-			<div class="bg_round"></div>
+		<div class="inner" data-aos="fade-up">
+			<div class="bg_round"><div class="in_gradient"></div></div>
 			<div class="problem service">
-				<p class="tit_label">PROBLEM</p>
-				<h2 id="industry-problem-title"><strong>대학 운영, 논문 연구에 집중해야 할 시간,</strong> <br class="pc_vw">행정 업무에 뺏기고 있지는 않나요?</h2>
+				<p class="tit_label" data-aos="zoom-out-up">PROBLEM</p>
+				<h2 id="industry-problem-title" data-aos="zoom-out-up">대학 운영, 논문 연구에 집중해야 할 시간, <br class="pc_vw"><strong>행정 업무에 뺏기고 있지는 않나요?</strong></h2>
 				<ul class="problem_list">
-					<li>
-						<h3>수기 예약과 장비 관리로 행정 누수가 발생합니다.</h3>
+					<li data-aos="zoom-out-up">
+						<h3>수기 예약과 장비 관리로 행정 누수가 발생합니다. <img src="/images/emoji_whirl.png" alt="" aria-hidden="true"></h3>
 						<p>전화와 이메일로 예약 문의가 쏟아지는데 일일이 수기로 처리하다 보니 업무가 너무 비효율적이에요. 청구서도 직접 작성하다 보면 실수도 생기고요.</p>
 					</li>
-					<li>
-						<h3>정부 시스템(ZEUS)과 교내 데이터가 따로 돕니다.</h3>
+					<li data-aos="zoom-out-up">
+						<h3>정부 시스템(ZEUS)과 교내 데이터가 따로 돕니다. <img src="/images/emoji_worry.png" alt="" aria-hidden="true"></h3>
 						<p>정부 장비 관리 시스템과 교내 데이터가 연동이 안 되어서 같은 항목을 계속 반복해서 입력해야 하는데 너무 불편해요.</p>
 					</li>
-					<li>
-						<h3>연구 성과와 논문 데이터가 파편화되어 있습니다.</h3>
+					<li data-aos="zoom-out-up">
+						<h3>연구 성과와 논문 데이터가 파편화되어 있습니다. <img src="/images/emoji_tears.png" alt="" aria-hidden="true"></h3>
 						<p>교수진의 소중한 연구 성과와 논문 자료가 체계적으로 관리되지 않아 자산화되지 못하고 있습니다.</p>
 					</li>
 				</ul>
-				<div class="dots" aria-hidden="true"><i class="t"></i><i class="m"></i><i class="b"></i></div>
+				<div class="dots" aria-hidden="true" data-aos="zoom-out-up"><i class="t"></i><i class="m"></i><i class="b"></i></div>
 			</div>
 		</div>
 	</section>
 	
 	<section class="infopage_solution industry_solution bg_white" aria-labelledby="industry-solution-title" data-header="light">
 		<div class="inner">
-			<p class="tit_label">SOLUTION</p>
-			<h2 id="industry-solution-title"><strong>홈페이지코리아는 대학·연구실 홈페이지를</strong> <br class="pc_vw">체계적으로 구현합니다.</h2>
-			<ul class="solution_list">
-				<li class="i1">
-					<h3>교내 장비 예약·결제 자동화 시스템</h3>
-					<p>실시간 장비 예약, 자동 결제, 청구서 발행까지 한 번에 처리됩니다. 수기 업무를 없애고 관리자의 행정 부담을 대폭 줄입니다.</p>
+			<p class="tit_label" data-aos="zoom-out-up">SOLUTION</p>
+			<h2 id="industry-solution-title" data-aos="zoom-out-up">홈페이지코리아는 <br class="pc_vw"><strong>대학·연구실 홈페이지를 체계적으로 구현합니다.</strong></h2>
+			<ul class="solution_list" data-aos="zoom-out-up">
+				<li class="i_e1">
+					<h3>교내 장비 <br class="pc_vw">예약·결제 자동화 시스템</h3>
+					<p>실시간 장비 예약, 자동 결제, 청구서 발행까지 한 번에 처리됩니다. <br class="pc_vw">수기 업무를 없애고 관리자의 행정 부담을 대폭 줄입니다.</p>
 				</li>
-				<li class="i2">
-					<h3>정부 시스템 연동</h3>
-					<p>정부 장비 관리 시스템과 교내 데이터를 완벽하게 연동하여 중복 입력 없이 효율적으로 데이터를 관리할 수 있습니다.</p>
+				<li class="i_e2">
+					<h3>정부 시스템 <br class="pc_vw">연동</h3>
+					<p>정부 장비 관리 시스템과 교내 데이터를 완벽하게 연동하여 <br class="pc_vw">중복 입력 없이 효율적으로 데이터를 관리할 수 있습니다.</p>
 				</li>
-				<li class="i3">
-					<h3>연구 성과 및 논문 아카이브 통합</h3>
+				<li class="i_e3">
+					<h3>연구 성과 및 <br class="pc_vw">논문 아카이브 통합</h3>
 					<p>교수진의 연구 성과, 논문 자료를 체계적으로 관리하고 AI 기반 검색으로 필요한 정보를 즉시 찾아내는 지식 관리 시스템을 구축합니다.</p>
 				</li>
 			</ul>
 		</div>
+		
+		<div class="portfolio_marquee">
+			<ul class="list">
+				<li>
+					<a href="/portfolio/view" class="box" aria-label="한양대학교 연구장비통합관리시스템 - WEB UI/UX / Mobile / JSP 포트폴리오 보기">
+						<span class="flip">
+							<span class="before" aria-hidden="true"><img src="/images/img_portfolio_sample.png" alt="" class="bg"><img src="/images/main_service_08.svg" alt="" class="logo"></span>
+							<span class="after" aria-hidden="true">
+								<span class="type">WEB UI/UX / Mobile / JSP</span>
+								<span class="tit">한양대학교 연구장비통합관리시스템</span>
+								<p>웹사이트 및 백오피스 구축, UI/UX, 브랜딩, Logo Design, CI, BI, 예약 시스템</p>
+								<span class="logo"><img src="/images/main_service_08.svg" alt=""></span>
+							</span>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="/portfolio/view" class="box" aria-label="한양대학교 연구장비통합관리시스템 - WEB UI/UX / Mobile / JSP 포트폴리오 보기">
+						<span class="flip">
+							<span class="before" aria-hidden="true"><img src="/images/img_portfolio_sample.png" alt="" class="bg"><img src="/images/main_service_08.svg" alt="" class="logo"></span>
+							<span class="after" aria-hidden="true">
+								<span class="type">WEB UI/UX / Mobile / JSP</span>
+								<span class="tit">한양대학교 연구장비통합관리시스템</span>
+								<p>웹사이트 및 백오피스 구축, UI/UX, 브랜딩, Logo Design, CI, BI, 예약 시스템</p>
+								<span class="logo"><img src="/images/main_service_08.svg" alt=""></span>
+							</span>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="/portfolio/view" class="box" aria-label="한양대학교 연구장비통합관리시스템 - WEB UI/UX / Mobile / JSP 포트폴리오 보기">
+						<span class="flip">
+							<span class="before" aria-hidden="true"><img src="/images/img_portfolio_sample.png" alt="" class="bg"><img src="/images/main_service_08.svg" alt="" class="logo"></span>
+							<span class="after" aria-hidden="true">
+								<span class="type">WEB UI/UX / Mobile / JSP</span>
+								<span class="tit">한양대학교 연구장비통합관리시스템</span>
+								<p>웹사이트 및 백오피스 구축, UI/UX, 브랜딩, Logo Design, CI, BI, 예약 시스템</p>
+								<span class="logo"><img src="/images/main_service_08.svg" alt=""></span>
+							</span>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="/portfolio/view" class="box" aria-label="한양대학교 연구장비통합관리시스템 - WEB UI/UX / Mobile / JSP 포트폴리오 보기">
+						<span class="flip">
+							<span class="before" aria-hidden="true"><img src="/images/img_portfolio_sample.png" alt="" class="bg"><img src="/images/main_service_08.svg" alt="" class="logo"></span>
+							<span class="after" aria-hidden="true">
+								<span class="type">WEB UI/UX / Mobile / JSP</span>
+								<span class="tit">한양대학교 연구장비통합관리시스템</span>
+								<p>웹사이트 및 백오피스 구축, UI/UX, 브랜딩, Logo Design, CI, BI, 예약 시스템</p>
+								<span class="logo"><img src="/images/main_service_08.svg" alt=""></span>
+							</span>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="/portfolio/view" class="box" aria-label="한양대학교 연구장비통합관리시스템 - WEB UI/UX / Mobile / JSP 포트폴리오 보기">
+						<span class="flip">
+							<span class="before" aria-hidden="true"><img src="/images/img_portfolio_sample.png" alt="" class="bg"><img src="/images/main_service_08.svg" alt="" class="logo"></span>
+							<span class="after" aria-hidden="true">
+								<span class="type">WEB UI/UX / Mobile / JSP</span>
+								<span class="tit">한양대학교 연구장비통합관리시스템</span>
+								<p>웹사이트 및 백오피스 구축, UI/UX, 브랜딩, Logo Design, CI, BI, 예약 시스템</p>
+								<span class="logo"><img src="/images/main_service_08.svg" alt=""></span>
+							</span>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="/portfolio/view" class="box" aria-label="한양대학교 연구장비통합관리시스템 - WEB UI/UX / Mobile / JSP 포트폴리오 보기">
+						<span class="flip">
+							<span class="before" aria-hidden="true"><img src="/images/img_portfolio_sample.png" alt="" class="bg"><img src="/images/main_service_08.svg" alt="" class="logo"></span>
+							<span class="after" aria-hidden="true">
+								<span class="type">WEB UI/UX / Mobile / JSP</span>
+								<span class="tit">한양대학교 연구장비통합관리시스템</span>
+								<p>웹사이트 및 백오피스 구축, UI/UX, 브랜딩, Logo Design, CI, BI, 예약 시스템</p>
+								<span class="logo"><img src="/images/main_service_08.svg" alt=""></span>
+							</span>
+						</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="flex_center" data-aos="zoom-out-up">
+			<a href="/portfolio/" class="btn_link slim hover_black">연구실 개발 사례 더보기</a>
+		</div>
 	</section>
 	
-	<section class="infopage_how industry_process" aria-labelledby="industry-process-title" data-header="dark">
+	<section class="infopage_expertise industry_expertise" aria-labelledby="industry-how-title" data-header="dark">
 		<div class="inner">
-			<p class="tit_label">Process</p>
-			<h2 id="industry-process-title"><strong>대학·연구실 홈페이지 제작</strong>, 이렇게 진행됩니다</h2>
-			<ul class="how_list">
-				<li class="i1">
-					<div class="imgfit"><img src="/images/service_how01.png" alt="" aria-hidden="true"></div>
-					<div class="txt">
-						<h3>STEP 1 요구사항 분석</h3>
-						<ul>
-							<li>- 업무 현장 방문 또는 온라인 미팅을 통해 실제 업무 흐름 관찰</li>
-							<li>- 요구사항 정리</li>
-						</ul>
-					</div>
+			<p class="tit_label" data-aos="zoom-out-up">HOW</p>
+			<h2 id="industry-how-title" aria-hidden="true"><strong>대학·연구실 홈페이지 제작,</strong> <br class="pc_vw">이렇게 진행됩니다.</h2>
+			<ul class="expertise_list step_list">
+				<li class="i_b1" data-aos="zoom-out-up">
+					<span>STEP 01</span>
+					<h3>요구사항 분석</h3>
+					<ul>
+						<li>업무 현장 방문 또는 온라인 미팅을 통해 실제 업무 흐름 관찰</li>
+						<li>요구사항 정리</li>
+					</ul>
 				</li>
-				<li class="i2">
-					<div class="imgfit"><img src="/images/service_how02.png" alt="" aria-hidden="true"></div>
-					<div class="txt">
-						<h3>STEP 2 맞춤 제안서 및 견적 제공</h3>
-						<ul>
-							<li>- 연구기관에 맞는 기능 제안</li>
-							<li>- 견적서 제공</li>
-						</ul>
-					</div>
+				<li class="i_b2" data-aos="zoom-out-up">
+					<span>STEP 02</span>
+					<h3>맞춤 제안서 및 견적 제공</h3>
+					<ul>
+						<li>연구기관에 맞는 기능 제안</li>
+						<li>견적서 제공</li>
+					</ul>
 				</li>
-				<li class="i3">
-					<div class="imgfit"><img src="/images/service_how03.png" alt="" aria-hidden="true"></div>
-					<div class="txt">
-						<h3>STEP 3 기획 및 디자인</h3>
-						<ul>
-							<li>- 화면 구조(와이어프레임) 공유</li>
-							<li>- 확정 후 디자인 진행</li>
-						</ul>
-					</div>
+				<li class="i_b3" data-aos="zoom-out-up">
+					<span>STEP 03</span>
+					<h3>기획 및 디자인</h3>
+					<ul>
+						<li>화면 구조(와이어프레임) 공유</li>
+						<li>확정 후 디자인 진행</li>
+					</ul> 
 				</li>
-				<li class="i4">
-					<div class="imgfit"><img src="/images/service_how02.png" alt="" aria-hidden="true"></div>
-					<div class="txt">
-						<h3>STEP 4 개발 및 배포</h3>
-						<ul>
-							<li>- 개발 및 QC</li>
-							<li>- 홈페이지 배포</li>
-						</ul>
-					</div>
+				<li class="i_b4" data-aos="zoom-out-up">
+					<span>STEP 04</span>
+					<h3>개발 및 배포</h3>
+					<ul>
+						<li>개발 및 QC</li>
+						<li>홈페이지 배포</li>
+					</ul>
 				</li>
 			</ul>
 		</div>
@@ -134,38 +218,41 @@
 			<svg class="line_svg" aria-hidden="true"></svg>
 		</div>
 		<div class="inner">
-			<p class="tit_label">REVIEW</p>
-			<h2 id="industry-review-title"><strong>이미 많은 대학·연구실이</strong> <br class="pc_vw">홈페이지코리아를 선택했습니다</h2>
-			<ul class="review_list">
+			<p class="tit_label" data-aos="zoom-out-up">REVIEW</p>
+			<h2 id="industry-review-title" data-aos="zoom-out-up">미 많은 대학·연구실이 <br class="pc_vw"><strong>홈페이지코리아를 선택했습니다.</strong></h2>
+			<ul class="review_list" data-aos="zoom-out-up">
 				<li>
 					<h3 class="sound_only">공공기관</h3>
-					<h4><strong>전자정부 프레임워크 기반 구축과 웹접근성 인증이 필수</strong>였지만, 이전 업체는 공공기관 요구사항을 제대로 이해하지 못해 프로젝트가 지연되었습니다. <br><br>홈페이지코리아는 전자정부법과 관련 지침을 정확히 숙지하고 있어 초기 <strong>기획 단계부터 법적 요구사항을 빠짐없이 반영</strong>해주셨습니다.</h4>
-					<p><i><img src="/images/icon_review_logo_blank.svg" alt="" aria-hidden="true"></i>환경부<span aria-hidden="true">공공기관</span></p>
+					<div class="flex_tit">
+						<h4>전자정부 프레임워크 기반 구축과 웹접근성 인증이 필수였지만, 이전 업체는 공공기관 요구사항을 제대로 이해하지 못해 프로젝트가 지연되었습니다. 홈페이지코리아는 <strong>전자정부법과 관련 지침을 정확히 	숙지</strong>하고 있어 <strong>초기 기획 단계부터 법적 요구사항을 빠짐없이 반영</strong>해주셨습니다.</h4>
+					</div>
+					<p><i><img src="/images/icon_review_logo_j1.svg" alt="" aria-hidden="true"></i>환경부<span aria-hidden="true">공공기관</span></p>
 				</li>
 				<li>
 					<h3 class="sound_only">공공기관</h3>
-					<h4>DMZ 구성과 내외부망 분리 등 <strong>복잡한 보안 환경</strong> 때문에 일반 웹 개발 업체와는 협업이 어려웠습니다. <br><br>홈페이지코리아는 자체 모듈 기반 개발로 외부 서비스 의존 없이 우리 기관의 <strong>보안 정책에 맞춰 시스템을 유연하게 배치</strong>해주셨습니다. </h4>
-					<p><i><img src="/images/icon_review_logo_blank.svg" alt="" aria-hidden="true"></i>과학기술정보통신부<span aria-hidden="true">공공기관</span></p>
+					<div class="flex_tit">
+						<h4>DMZ 구성과 내외부망 분리 등 복잡한 보안 환경 때문에 일반 웹 개발 업체와는 협업이 어려웠습니다. 홈페이지코리아는 <strong>자체 모듈 기반 개발</strong>로 외부 서비스 의존 없이 <strong>우리 기관의 보안 정책에 맞춰 시스템을 유연하게 배치</strong>해주셨습니다.</h4>
+					</div>
+					<p><i><img src="/images/icon_review_logo_j2.png" alt="" aria-hidden="true"></i>과학기술정보통신부<span aria-hidden="true">공공기관</span></p>
 				</li>
 				<li>
 					<h3 class="sound_only">공공기관</h3>
-					<h4>담당자가 IT 전문가가 아니다 보니 업체에서 설명하는 기술 용어를 이해하기 어려워 소통에 어려움을 겪었습니다. <br><br>홈페이지코리아는 쉬운 언어로 설명해주셨고, <strong>예산 집행부터 감리 대응까지 복잡한 절차도 단계별로 명확하게 안내</strong>해주셨습니다. 덕분에 프로젝트가 막힘 없이 진행되었고, 최종 결과물도 매우 만족스러웠습니다.</h4>
-					<p><i><img src="/images/icon_review_logo_blank.svg" alt="" aria-hidden="true"></i>국립체육진흥공단<span aria-hidden="true">공공기관</span></p>
+					<div class="flex_tit">
+						<h4>담당자가 IT 전문가가 아니다 보니 업체에서 설명하는 기술 용어를 이해하기 어려워 소통에 어려움을 겪었습니다. 홈페이지코리아는 쉬운 언어로 설명해주셨고, <strong>예산 집행부터 감리 대응까지 복잡한 	절차도 단계별로 명확하게 안내</strong>해주셨습니다. 덕분에 <strong>프로젝트가 막힘 없이 진행</strong>되었고, <strong>최종 결과물도 매우 만족</strong>스러웠습니다.</h4>
+					</div>
+					<p><i><img src="/images/icon_review_logo_j3.png" alt="" aria-hidden="true"></i>국립체육진흥공단<span aria-hidden="true">공공기관</span></p>
 				</li>
 			</ul>
-			<div class="flex_center">
-				<a href="/portfolio/" class="btn_link slim">홈페이지 제작 사례 더보기</a>
-			</div>
 		</div>
 	</section>
 	
 	<section class="infopage_contact industry_contact page_contact" aria-label="industry-contact-title" data-header="dark">
 		<div class="inner">
 			<p class="tit_label sound_only">CTA</p>
-			<h2 id="industry-contact-title" class="port_tit"><strong>지식의 가치를 높이는 웹사이트,</strong> <br class="pc_vw">홈페이지코리아와 상의하세요</h2>
+			<h2 id="industry-contact-title" class="port_tit" data-aos="zoom-out-up"><strong>지식의 가치를 높이는 웹사이트,</strong> <br class="pc_vw">홈페이지코리아와 상담하세요.</h2>
 			<div class="btns flex_center">
-				<a href="/portfolio/" class="btn_link">포트폴리오 보러가기</a>
-				<a href="/contact/" class="btn_link">프로젝트 문의하기</a>
+				<a href="/portfolio/" class="btn_link" data-aos="zoom-out-up">포트폴리오 보러가기</a>
+				<a href="/contact/" class="btn_link" data-aos="zoom-out-up">프로젝트 문의하기</a>
 			</div>
 		</div>
 	</section>
@@ -233,6 +320,56 @@ $(document).ready(function(){
 	}
 	$(window).on("scroll", bgRoundScroll);
 	bgRoundScroll();
+// Portfolio marquee
+    (function () {
+        const $banner    = $(".portfolio_marquee");
+        const $origSlide = $banner.find(".list");
+        const speed      = 1;
+        let posX         = 0;
+        let isPaused     = false;
+        $banner.append($origSlide.clone().removeAttr("aria-label").attr("aria-hidden", "true"));
+        const totalWidth = $origSlide.outerWidth(true);
+        function marqueeLoop() {
+            if (!isPaused) {
+                posX -= speed;
+                if (Math.abs(posX) >= totalWidth) posX = 0;
+                $banner.find(".list").css("transform", `translateX(${posX}px)`);
+            }
+            requestAnimationFrame(marqueeLoop);
+        }
+        marqueeLoop();
+        $banner.on("mouseenter", function () { isPaused = true; })
+               .on("mouseleave", function () { isPaused = false; });
+    })();
+// step_list
+    const $items   = $(".expertise_list.step_list > li");
+    const interval = 3000;
+    let current    = 0;
+    let timer      = null;
+    let started    = false;
+    function stepNext() {
+        $items.removeClass("on");
+        $items.eq(current).addClass("on");
+        current = (current + 1) % $items.length;
+    }
+    function startStep() {
+        if (started) return;
+        started = true;
+        stepNext();
+        timer = setInterval(stepNext, interval);
+    }
+    function checkStepList() {
+        if (started) return;
+        const $list     = $(".expertise_list.step_list");
+        if (!$list.length) return;
+        const listBottom = $list.offset().top + $list.outerHeight();
+        const viewBottom = $(window).scrollTop() + $(window).height();
+        if (viewBottom >= listBottom) {
+            startStep();
+        }
+    }
+    $(window).on("scroll", checkStepList);
+    checkStepList();
 // review 사선
 	function drawLines() {
 		const $wrap = $('.line_wrap');
@@ -301,6 +438,41 @@ $(document).ready(function(){
 
 	$(window).on('resize', function() {
 		drawLines();
+	});
+// review_list
+	function equalReviewHeight() {
+		const $items = $(".review_list .flex_tit");
+		$items.css("height", ""); // 초기화
+		if ($(window).width() >= 768) {
+			let maxH = 0;
+			$items.each(function () {
+				maxH = Math.max(maxH, $(this).outerHeight());
+			});
+			$items.css("height", maxH + "px");
+		}
+	}
+	$(window).on("load resize", equalReviewHeight);
+// contact
+	const observerContact = new IntersectionObserver(function(entries) {
+		entries.forEach(function(entry) {
+			if (entry.isIntersecting) {
+				$(".infopage_contact").addClass("start");
+			} else {
+				// 요소가 아직 아래에 있을 때만 해제
+				if (entry.boundingClientRect.top > window.innerHeight / 2) {
+					$(".infopage_contact").removeClass("start");
+				}
+			}
+		});
+	}, {
+		threshold: 0.5  // 요소의 50%가 보일 때 트리거
+	});
+
+	const contactTarget = document.querySelector('.infopage_contact');
+	if (contactTarget) observerContact.observe(contactTarget);
+// AOS
+	AOS.init({
+		duration: 1000,
 	});
 });
 </script>

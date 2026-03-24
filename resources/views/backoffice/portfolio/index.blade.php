@@ -105,7 +105,7 @@
                                     <input type="checkbox" name="ids[]" value="{{ $portfolio->id }}" class="form-check-input portfolio-checkbox">
                                 </td>
                                 <td>{{ $portfolios->total() - ($portfolios->currentPage() - 1) * $portfolios->perPage() - $index }}</td>
-                                <td>{{ $portfolio->category }}</td>
+                                <td>{{ implode(', ', $portfolio->categories ?? array_filter([$portfolio->category])) }}</td>
                                 <td>{{ $portfolio->title }}</td>
                                 <td>{{ $portfolio->sort_order }}</td>
                                 <td>{{ $portfolio->is_main_display ? 'Y' : 'N' }}</td>

@@ -5,16 +5,32 @@
         <ul class="pagination">
             {{-- 첫 페이지로 이동 --}}
             @if ($paginator->onFirstPage())
-                <li class="page-item arw_item disabled"><span class="page-link"><i class="arrow two first"></i></span></li>
+                <li class="page-item disabled">
+                    <span class="page-link">
+                        <i class="fas fa-angle-double-left"></i>
+                    </span>
+                </li>
             @else
-                <li class="page-item arw_item"><a class="page-link" href="{{ $paginator->url(1) }}" title="첫 페이지로"><i class="arrow two first"></i></a></li>
+                <li class="page-item">
+                    <a class="page-link" href="{{ $paginator->url(1) }}" title="첫 페이지로">
+                        <i class="fas fa-angle-double-left"></i>
+                    </a>
+                </li>
             @endif
 
             {{-- 이전 페이지 링크 --}}
             @if ($paginator->onFirstPage())
-                <li class="page-item arw_item disabled"><span class="page-link"><i class="arrow one prev"></i></span></li>
+                <li class="page-item disabled">
+                    <span class="page-link">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                </li>
             @else
-                <li class="page-item arw_item"><a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" title="이전 페이지"><i class="arrow one prev"></i></a></li>
+                <li class="page-item">
+                    <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" title="이전 페이지">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                </li>
             @endif
 
             {{-- 페이지 번호들 --}}
@@ -28,16 +44,32 @@
 
             {{-- 다음 페이지 링크 --}}
             @if ($paginator->hasMorePages())
-                <li class="page-item arw_item"><a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next" title="다음 페이지"><i class="arrow one next"></i></a></li>
+                <li class="page-item">
+                    <a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next" title="다음 페이지">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </li>
             @else
-                <li class="page-item arw_item disabled"><span class="page-link"><i class="arrow one next"></i></span></li>
+                <li class="page-item disabled">
+                    <span class="page-link">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+                </li>
             @endif
 
             {{-- 마지막 페이지로 이동 --}}
             @if ($paginator->hasMorePages())
-                <li class="page-item arw_item"><a class="page-link" href="{{ $paginator->url($paginator->lastPage()) }}" title="마지막 페이지로"><i class="arrow two last"></i></a></li>
+                <li class="page-item">
+                    <a class="page-link" href="{{ $paginator->url($paginator->lastPage()) }}" title="마지막 페이지로">
+                        <i class="fas fa-angle-double-right"></i>
+                    </a>
+                </li>
             @else
-                <li class="page-item arw_item disabled"><span class="page-link"><i class="arrow two last"></i></span></li>
+                <li class="page-item disabled">
+                    <span class="page-link">
+                        <i class="fas fa-angle-double-right"></i>
+                    </span>
+                </li>
             @endif
         </ul>
     </nav>   

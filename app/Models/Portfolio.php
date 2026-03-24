@@ -21,6 +21,7 @@ class Portfolio extends Model
 
     protected $fillable = [
         'category',
+        'categories',
         'development_summary',
         'title',
         'keywords',
@@ -37,11 +38,10 @@ class Portfolio extends Model
         'solution_content',
         'solution_before_image',
         'solution_after_image',
-        'feature_title',
-        'feature_content',
     ];
 
     protected $casts = [
+        'categories' => 'array',
         'keywords' => 'array',
         'is_main_display' => 'boolean',
         'is_active' => 'boolean',
@@ -55,5 +55,10 @@ class Portfolio extends Model
     public function reviews(): HasMany
     {
         return $this->hasMany(PortfolioReview::class)->orderBy('sort_order');
+    }
+
+    public function featureDevelopments(): HasMany
+    {
+        return $this->hasMany(PortfolioFeatureDevelopment::class)->orderBy('sort_order');
     }
 }

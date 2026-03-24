@@ -117,8 +117,9 @@
 					<a href="/blog/" class="btn btn_list">목록으로</a>
 				</div>
 				<div class="right">
-					<button type="button" class="btn btn_link_copy">링크 복사</button>
-					<button type="button" class="btn btn_share">공유하기</button>
+					<button type="button" class="like" aria-pressed="false" aria-label="좋아요"><span aria-hidden="true"><i></i><p>좋아요<strong>158</strong></p></span></button>
+					<button type="button" class="btn btn_link_copy slim">링크 복사</button>
+					<button type="button" class="btn btn_share slim">공유하기</button>
 				</div>
 			</div>
 		</div>
@@ -141,7 +142,7 @@
 
 <script>
 $(document).ready(function () {
-//목차
+// 목차
     $('.index_list a[href^="#"]').on('click', function (e) {
         e.preventDefault();
         const target = $(this).attr('href');
@@ -172,7 +173,7 @@ $(document).ready(function () {
     }
     $(window).on('scroll', updateIndexActive);
     updateIndexActive();
-//unfixed 클래스 토글
+// unfixed 클래스 토글
 	let indexFixedTop = 0;
 	let recommendedFixedTop = 0;
 
@@ -220,6 +221,11 @@ $(document).ready(function () {
 	$(window).on('resize', function () {
 		cacheFixedTops();
 		checkUnfixed();
+	});
+// 체크박스 토글
+	$(".like").on("click", function() {
+		const pressed = $(this).attr("aria-pressed") === "true";
+		$(this).attr("aria-pressed", !pressed).toggleClass("checked", !pressed);
 	});
 });
 </script>

@@ -172,7 +172,7 @@
 </main>
 
 <script>
-//portfolio_problem svg line
+// portfolio_problem svg line
 	function drawLines() {
 		const $wrap = $('.line_wrap');
 		const $svg  = $wrap.find('.line_svg');
@@ -241,7 +241,7 @@
 	$(window).on('resize', function() {
 		drawLines();
 	});
-//portfolio_feature_development 접근성 호환 탭
+// portfolio_feature_development 접근성 호환 탭
 	const $tabs    = $(".wrap-tab-container .tab-list");
 	const $panels  = $(".wrap-tab-container .tab-contents");
 	function activateTab($tab) {
@@ -298,7 +298,7 @@
 				break;
 		}
 	});
-//portfolio_mobile_ui 세로 marquee
+// portfolio_mobile_ui 세로 marquee
 	function initMobileMarquee() {
 		const marqueeList = [
 			{ selector: '.mobile_view1', speed: 0.5 },
@@ -337,5 +337,23 @@
 	$(window).on('load', function() {
 		initMobileMarquee();
 	});	
+// contact
+	const observerContact = new IntersectionObserver(function(entries) {
+		entries.forEach(function(entry) {
+			if (entry.isIntersecting) {
+				$(".page_contact").addClass("start");
+			} else {
+				// 요소가 아직 아래에 있을 때만 해제
+				if (entry.boundingClientRect.top > window.innerHeight / 2) {
+					$(".page_contact").removeClass("start");
+				}
+			}
+		});
+	}, {
+		threshold: 0.5  // 요소의 50%가 보일 때 트리거
+	});
+
+	const contactTarget = document.querySelector('.page_contact');
+	if (contactTarget) observerContact.observe(contactTarget);
 </script>
 @endsection

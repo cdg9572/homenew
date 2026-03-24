@@ -50,6 +50,11 @@ class ButtonManager {
      * ButtonManager를 완전히 건너뛸 버튼들
      */
     shouldSkipButton(button) {
+        // CKEditor UI 버튼은 에디터 내부 이벤트를 사용하므로 전역 제어에서 제외
+        if (button.classList.contains('ck-button') || button.closest('.ck')) {
+            return true;
+        }
+
         // 특정 ID의 버튼들
         const skipIds = ['sessionExtendBtn', 'sidebarToggle', 'navbar-toggler'];
         if (skipIds.includes(button.id)) {

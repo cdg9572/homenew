@@ -56,6 +56,7 @@ span.br {display:block;}
 /* 높이값 설정 */
 .height_vh {height:100vh; max-height:calc(var(--vh, 1vh) * 100);}
 /* 숨김링크 */
+.blind_link {position:fixed; z-index:103;}
 .blind_link a {position:fixed; top:-100%; left:0; width:100%; font-size:20px; text-align:center; padding:20px; z-index:101;}
 .blind_link a:active,
 .blind_link a:focus {top:0; color:#fff; background:#000;}

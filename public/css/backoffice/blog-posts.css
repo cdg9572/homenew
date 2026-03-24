@@ -1,0 +1,20 @@
+.blog-section-row {
+    margin-bottom: 12px;
+}
+
+.blog-existing-thumbnail {
+    margin-top: 8px;
+}
+
+.blog-remove-thumbnail-check {
+    margin-top: 8px;
+}
+
+#recommendedSearchResult .board-attachment-item,
+#selectedRecommendedList .board-attachment-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+}

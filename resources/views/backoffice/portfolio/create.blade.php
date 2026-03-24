@@ -23,3 +23,7 @@
 </div>
 @endsection
 
+@section('scripts')
+    <x-backoffice-ckeditor-assets />
+@endsection
+

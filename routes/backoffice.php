@@ -1,23 +1,25 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backoffice\AuthController;
-use App\Http\Controllers\Backoffice\AdminMenuController;
-use App\Http\Controllers\Backoffice\CategoryController;
-use App\Http\Controllers\Backoffice\SettingController;
-use App\Http\Controllers\Backoffice\BoardController;
-use App\Http\Controllers\Backoffice\BoardTemplateController;
-use App\Http\Controllers\Backoffice\BoardSkinController;
-use App\Http\Controllers\Backoffice\BoardPostController;
-use App\Http\Controllers\Backoffice\UserController;
-use App\Http\Controllers\Backoffice\LogController;
+use App\Http\Controllers\Backoffice\AccessStatisticsController;
 use App\Http\Controllers\Backoffice\AdminController;
 use App\Http\Controllers\Backoffice\AdminGroupController;
+use App\Http\Controllers\Backoffice\AdminMenuController;
+use App\Http\Controllers\Backoffice\AuthController;
 use App\Http\Controllers\Backoffice\BannerController;
+use App\Http\Controllers\Backoffice\BlogPostController;
+use App\Http\Controllers\Backoffice\BoardController;
+use App\Http\Controllers\Backoffice\BoardPostController;
+use App\Http\Controllers\Backoffice\BoardSkinController;
+use App\Http\Controllers\Backoffice\BoardTemplateController;
+use App\Http\Controllers\Backoffice\CategoryController;
+use App\Http\Controllers\Backoffice\ContactController;
+use App\Http\Controllers\Backoffice\LogController;
 use App\Http\Controllers\Backoffice\PopupController;
-use App\Http\Controllers\Backoffice\AccessStatisticsController;
 use App\Http\Controllers\Backoffice\PortfolioController;
+use App\Http\Controllers\Backoffice\SettingController;
+use App\Http\Controllers\Backoffice\UserController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 // =============================================================================
 // 백오피스 인증 라우트
@@ -35,11 +37,11 @@ Route::prefix('backoffice')->name('backoffice.')->group(function () {
 // =============================================================================
 
 Route::prefix('backoffice')->middleware(['backoffice'])->group(function () {
-    
+
     // 대시보드
     Route::get('/', [App\Http\Controllers\Backoffice\DashboardController::class, 'index'])
         ->name('backoffice.dashboard');
-    
+
     // 대시보드 API
     Route::get('/api/statistics', [App\Http\Controllers\Backoffice\DashboardController::class, 'statistics'])
         ->name('backoffice.api.statistics');
@@ -50,13 +52,13 @@ Route::prefix('backoffice')->middleware(['backoffice'])->group(function () {
 
     // 관리자 메뉴 관리
     Route::resource('admin-menus', AdminMenuController::class, [
-        'names' => 'backoffice.admin-menus'
+        'names' => 'backoffice.admin-menus',
     ])->except(['show']);
 
     // 메뉴 순서 업데이트
     Route::post('admin-menus/update-order', [AdminMenuController::class, 'updateOrder'])
         ->name('backoffice.admin-menus.update-order');
-    
+
     // 메뉴 부모 업데이트 (드래그로 메뉴 이동)
     Route::post('admin-menus/update-parent', [AdminMenuController::class, 'updateParent'])
         ->name('backoffice.admin-menus.update-parent');
@@ -95,7 +97,7 @@ Route::prefix('backoffice')->middleware(['backoffice'])->group(function () {
         ->name('backoffice.categories.generate-preview-code');
 
     Route::resource('categories', CategoryController::class, [
-        'names' => 'backoffice.categories'
+        'names' => 'backoffice.categories',
     ])->except(['show']);
 
     // 기본설정 관리
@@ -111,7 +113,7 @@ Route::prefix('backoffice')->middleware(['backoffice'])->group(function () {
         ->name('backoffice.user-access-logs');
     Route::get('admin-access-logs', [LogController::class, 'adminAccessLogs'])
         ->name('backoffice.admin-access-logs');
-    
+
     // 통계 관리
     Route::get('access-statistics', [AccessStatisticsController::class, 'index'])
         ->name('backoffice.access-statistics');
@@ -124,12 +126,12 @@ Route::prefix('backoffice')->middleware(['backoffice'])->group(function () {
     Route::post('admins/check-login-id', [AdminController::class, 'checkLoginId'])
         ->name('backoffice.admins.check-login-id');
     Route::resource('admins', AdminController::class, [
-        'names' => 'backoffice.admins'
+        'names' => 'backoffice.admins',
     ]);
 
     // 관리자 권한 그룹 관리
     Route::resource('admin-groups', AdminGroupController::class, [
-        'names' => 'backoffice.admin-groups'
+        'names' => 'backoffice.admin-groups',
     ])->except(['show']);
 
     // 권한 그룹 권한 설정
@@ -150,13 +152,13 @@ Route::prefix('backoffice')->middleware(['backoffice'])->group(function () {
 
             return response()->json([
                 'uploaded' => true,
-                'url' => asset('storage/' . $path)
+                'url' => asset('storage/'.$path),
             ]);
         }
 
         return response()->json([
             'uploaded' => false,
-            'error' => ['message' => '이미지 업로드에 실패했습니다.']
+            'error' => ['message' => '이미지 업로드에 실패했습니다.'],
         ]);
     });
 
@@ -177,13 +179,13 @@ Route::prefix('backoffice')->middleware(['backoffice'])->group(function () {
 
     // 게시판 관리
     Route::resource('boards', BoardController::class, [
-        'names' => 'backoffice.boards'
+        'names' => 'backoffice.boards',
     ])->except(['show']); // show는 제외 (게시글 목록과 충돌)
 
     // 게시판 템플릿 관리
     Route::resource('board-templates', BoardTemplateController::class, [
         'names' => 'backoffice.board-templates',
-        'parameters' => ['board-templates' => 'boardTemplate']
+        'parameters' => ['board-templates' => 'boardTemplate'],
     ]);
 
     // 게시판 템플릿 추가 기능
@@ -195,7 +197,7 @@ Route::prefix('backoffice')->middleware(['backoffice'])->group(function () {
     // 게시판 스킨 관리
     Route::resource('board-skins', BoardSkinController::class, [
         'names' => 'backoffice.board-skins',
-        'parameters' => ['board-skins' => 'boardSkin']
+        'parameters' => ['board-skins' => 'boardSkin'],
     ]);
 
     // 게시판 스킨 템플릿 편집
@@ -208,29 +210,38 @@ Route::prefix('backoffice')->middleware(['backoffice'])->group(function () {
 
     // 게시글 관리
     Route::resource('posts', BoardPostController::class, [
-        'names' => 'backoffice.posts'
+        'names' => 'backoffice.posts',
     ]);
 
     // 회원 관리
     Route::resource('users', UserController::class, [
-        'names' => 'backoffice.users'
+        'names' => 'backoffice.users',
     ]);
 
     // 배너 관리
     Route::resource('banners', BannerController::class, [
-        'names' => 'backoffice.banners'
+        'names' => 'backoffice.banners',
     ]);
     Route::post('banners/update-order', [BannerController::class, 'updateOrder'])->name('backoffice.banners.update-order');
 
     // 팝업 관리
     Route::resource('popups', PopupController::class, [
-        'names' => 'backoffice.popups'
+        'names' => 'backoffice.popups',
     ]);
     Route::post('popups/update-order', [PopupController::class, 'updateOrder'])->name('backoffice.popups.update-order');
 
+    // 문의(Contact) 접수 관리
+    Route::get('contacts/{contact}/attachments/{index}', [ContactController::class, 'downloadAttachment'])
+        ->whereNumber('index')
+        ->name('backoffice.contacts.attachments.download');
+
+    Route::resource('contacts', ContactController::class, [
+        'names' => 'backoffice.contacts',
+    ])->only(['index', 'edit', 'update']);
+
     // 포트폴리오 관리
     Route::resource('portfolio', PortfolioController::class, [
-        'names' => 'backoffice.portfolio'
+        'names' => 'backoffice.portfolio',
     ])->except(['show']);
     Route::post('portfolio/update-order', [PortfolioController::class, 'updateOrder'])
         ->name('backoffice.portfolio.update-order');
@@ -240,4 +251,13 @@ Route::prefix('backoffice')->middleware(['backoffice'])->group(function () {
     // 세션 연장
     Route::post('session/extend', [App\Http\Controllers\Backoffice\SessionController::class, 'extend'])
         ->name('backoffice.session.extend');
+
+    // 블로그 관리
+    Route::post('blog-posts/{blogPost}/event', [BlogPostController::class, 'recordEvent'])
+        ->name('backoffice.blog-posts.event');
+    Route::post('blog-posts/{blogPost}/like', [BlogPostController::class, 'like'])
+        ->name('backoffice.blog-posts.like');
+    Route::resource('blog-posts', BlogPostController::class, [
+        'names' => 'backoffice.blog-posts',
+    ])->except(['show']);
 });

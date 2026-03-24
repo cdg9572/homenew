@@ -65,6 +65,7 @@
     <link rel="preload" href="/css/font/Pretendard-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/css/font/Pretendard-Bold.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="stylesheet" href="/css/font.css" media="all">
+	<link rel="stylesheet" href="/css/aos.css">
     <link rel="stylesheet" href="/css/styles.css?v=<?=$ver_styles?>">
 	<link rel="stylesheet" href="/css/reactive.css?v=<?=$ver_reactive?>">
     <!-- page Styles -->
@@ -72,10 +73,18 @@
     
     <!-- jQuery -->
     <script src="//code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="/js/aos.js"></script>
     <script src="/js/com.js"></script>
 </head>
 <body>
-	<div class="blind_link"><a href="#mainContent">본문 바로가기</a></div>
+	<div class="blind_link">
+		@if(isset($gNum) && $gNum == 'main')
+			<a href="#main_visual">본문 바로가기</a>
+		@else
+			<a href="#mainContent">본문 바로가기</a>
+		@endif
+	</div>
+	
 	@if(isset($gNum) && $gNum !== '99')
     <header class="header {{ (isset($gNum) && $gNum == 'main') ? 'main' : '' }} {{ (isset($gNum) && $gNum == '03' && ($page ?? '') == 'view' || $gNum == '01' || $gNum == '02') ? 'white_mode' : '' }}">
 		<div class="inbox flex items-center justify-between">
@@ -124,7 +133,7 @@
 	</header>
 	@endif
     
-	<div class="container_wrap {{ (isset($gNum) && $gNum !== 'main') ? 'sub_wrap' : '' }} {{ (isset($gNum) && $gNum !== 'main') ? 'g'.$gNum : '' }} {{ (isset($gNum) && $gNum == '03' && ($page ?? '') == 'view') ? 'portfolio_view_wrap' : '' }}">
+	<div class="container_wrap {{ (isset($gNum) && $gNum !== 'main') ? 'sub_wrap' : '' }} {{ (isset($gNum) && $gNum !== 'main') ? 'g'.$gNum : '' }} {{ (isset($gNum) && $gNum == '03' && ($page ?? '') == 'view') ? 'portfolio_view_wrap' : '' }}" id="mainContent">
         @yield('content')
     </div>
 	@if(isset($gNum) && $gNum !== '99')
@@ -161,7 +170,7 @@
 				<nav class="footer_menus" aria-label="푸터 메뉴">
 					<ul class="flex">
 						<li class="menu {{ ($gNum ?? '') == '01' ? 'on' : '' }}">
-							<a href="/service/homepage-seo-geo" id="main-menu-01"aria-haspopup="true" aria-expanded="{{ ($gNum ?? '') == '01' ? 'true' : 'false' }}"{{ ($gNum ?? '') == '01' ? 'aria-current="page"' : '' }}>Service</a>
+							<a href="/service/homepage-seo-geo" id="main-menu-01"aria-haspopup="true" aria-expanded="{{ ($gNum ?? '') == '01' ? 'true' : 'false' }}"{{ ($gNum ?? '') == '01' ? 'aria-current="page"' : '' }}>SERVICE</a>
 							<ul class="snb" aria-labelledby="main-menu-01">
 								<li>
 									<a href="/service/homepage-seo-geo" {{ (($gNum ?? '') == '01' && ($sNum ?? '') == '01') ? 'class="on" aria-current="page"' : '' }}>SEO·GEO 최적화</a>
@@ -175,7 +184,7 @@
 							</ul>
 						</li>
 						<li class="menu {{ ($gNum ?? '') == '02' ? 'on' : '' }}">
-							<a href="/industries/about" id="main-menu-02"aria-haspopup="true" aria-expanded="{{ ($gNum ?? '') == '02' ? 'true' : 'false' }}"{{ ($gNum ?? '') == '03' ? 'aria-current="page"' : '' }}>Industry</a>
+							<a href="/industries/about" id="main-menu-02"aria-haspopup="true" aria-expanded="{{ ($gNum ?? '') == '02' ? 'true' : 'false' }}"{{ ($gNum ?? '') == '03' ? 'aria-current="page"' : '' }}>INDUSTRY</a>
 							<ul class="snb" aria-labelledby="main-menu-02">
 								<li>
 									<a href="/industries/enterprise" {{ (($gNum ?? '') == '02' && ($sNum ?? '') == '01') ? 'class="on" aria-current="page"' : '' }}>중견/대기업</a>
@@ -186,8 +195,8 @@
 								</li>	
 							</ul>
 						</li>
-						<li class="menu {{ ($gNum ?? '') == '03' ? 'on' : '' }}"><a href="/portfolio/" id="main-menu-03"aria-haspopup="true" aria-expanded="{{ ($gNum ?? '') == '03' ? 'true' : 'false' }}"{{ ($gNum ?? '') == '03' ? 'aria-current="page"' : '' }}>Portfolio</a></li>
-						<li class="menu {{ ($gNum ?? '') == '04' ? 'on' : '' }}"><a href="/blog/" id="main-menu-04"aria-haspopup="true" aria-expanded="{{ ($gNum ?? '') == '04' ? 'true' : 'false' }}"{{ ($gNum ?? '') == '04' ? 'aria-current="page"' : '' }}>Blog</a></li>
+						<li class="menu {{ ($gNum ?? '') == '03' ? 'on' : '' }}"><a href="/portfolio/" id="main-menu-03"aria-haspopup="true" aria-expanded="{{ ($gNum ?? '') == '03' ? 'true' : 'false' }}"{{ ($gNum ?? '') == '03' ? 'aria-current="page"' : '' }}>PORTFOLIO</a></li>
+						<li class="menu {{ ($gNum ?? '') == '04' ? 'on' : '' }}"><a href="/blog/" id="main-menu-04"aria-haspopup="true" aria-expanded="{{ ($gNum ?? '') == '04' ? 'true' : 'false' }}"{{ ($gNum ?? '') == '04' ? 'aria-current="page"' : '' }}>BLOG</a></li>
 					</ul>
 				</nav>
 				<div class="btm_space" aria-hidden="true"><img src="/images/txt_btm_space.svg" alt="HOMEPAGEKOREA"></div>

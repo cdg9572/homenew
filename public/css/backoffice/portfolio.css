@@ -61,7 +61,7 @@
 
 .member-form-field .board-form-control {
     width: 100%;
-    max-width: 720px;
+    max-width: 100%;
     min-height: 38px;
     border: 1px solid #e0e0e0;
     border-radius: 6px;
@@ -90,6 +90,7 @@
     display: flex;
     gap: 20px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .checkbox-label {
@@ -111,7 +112,12 @@
 }
 
 .file-row > div {
+    flex: 1 1 0;
     min-width: 260px;
+}
+
+.file-row .board-file-upload {
+    width: 100%;
 }
 
 .sub-label {
@@ -142,6 +148,39 @@
 
 .review-row .remove-review {
     margin-top: 8px;
+}
+
+.feature-file-row {
+    margin-top: 10px;
+}
+
+.existing-image-preview {
+    margin-top: 10px;
+}
+
+.existing-image-preview a {
+    display: inline-block;
+}
+
+.existing-image-preview img {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.feature-existing-image img {
+    width: 140px;
+    height: 90px;
+}
+
+.feature-row .remove-feature {
+    margin-top: 8px;
+}
+
+.feature-row .review-row-grid {
+    grid-template-columns: 1fr;
 }
 
 .board-form-actions {

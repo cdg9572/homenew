@@ -1,13 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Backoffice\PopupController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SubController;
-use App\Http\Controllers\Backoffice\PopupController;
+use Illuminate\Support\Facades\Route;
 
 // =============================================================================
 // 기본 라우트 파일
@@ -42,11 +43,14 @@ Route::prefix('portfolio')->name('portfolio.')->group(function () {
 
 Route::prefix('blog')->name('blog.')->group(function () {
     Route::get('/', [SubController::class, 'blog_list'])->name('blog_list');
-    Route::get('/view', [SubController::class, 'blog_view'])->name('blog_view');
+    Route::get('/view/{slug?}', [SubController::class, 'blog_view'])->name('blog_view');
 });
 
 Route::prefix('contact')->name('contact.')->group(function () {
     Route::get('/', [SubController::class, 'contact'])->name('contact');
+    Route::post('/', [ContactController::class, 'store'])
+        ->middleware('throttle:12,1')
+        ->name('store');
 });
 
 // 팝업 표시 (일반 팝업용)

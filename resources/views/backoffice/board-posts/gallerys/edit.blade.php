@@ -2,12 +2,6 @@
 
 @section('title', $board->name ?? '게시판')
 
-@section('styles')
-     <link rel="stylesheet" href="{{ asset('css/backoffice/summernote-custom.css') }}">
-    <!-- Summernote CSS (Bootstrap 기반, 완전 무료) -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-@endsection
-
 @section('content')
 <div class="board-container">
     <div class="board-header">
@@ -80,7 +74,7 @@
                             <span class="required">*</span>
                         @endif
                     </label>
-                    <textarea class="board-form-control board-form-textarea" id="content" name="content" rows="15" @if($board->isFieldRequired('content')) required @endif>{{ $post->content }}</textarea>
+                    <textarea class="board-form-control board-form-textarea" id="content" name="content" rows="15" data-backoffice-ckeditor @if($board->isFieldRequired('content')) required @endif>{{ $post->content }}</textarea>
                 </div>
                 @endif
 
@@ -209,10 +203,11 @@
                                        value="{{ old('custom_field_' . $fieldConfig['name'], $fieldValue) }}"
                                        @if($fieldConfig['required']) required @endif>
                             @elseif($fieldConfig['type'] === 'editor')
-                                <textarea class="board-form-control board-form-textarea summernote-editor" 
-                                          id="custom_field_{{ $fieldConfig['name'] }}" 
-                                          name="custom_field_{{ $fieldConfig['name'] }}" 
+                                <textarea class="board-form-control board-form-textarea"
+                                          id="custom_field_{{ $fieldConfig['name'] }}"
+                                          name="custom_field_{{ $fieldConfig['name'] }}"
                                           rows="10"
+                                          data-backoffice-ckeditor
                                           @if($fieldConfig['required']) required @endif>{{ old('custom_field_' . $fieldConfig['name'], $fieldValue) }}</textarea>
                             @endif
                             
@@ -321,9 +316,6 @@
 @endsection
 
 @section('scripts')
-    <!-- jQuery, Bootstrap, Summernote JS (순서 중요!) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    <x-backoffice-ckeditor-assets />
     <script src="{{ asset('js/backoffice/board-post-form.js') }}"></script>
 @endsection

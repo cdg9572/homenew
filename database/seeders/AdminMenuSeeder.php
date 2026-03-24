@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\AdminMenu;
+use Illuminate\Database\Seeder;
 
 class AdminMenuSeeder extends Seeder
 {
@@ -293,22 +293,34 @@ class AdminMenuSeeder extends Seeder
                 'updated_at' => '2025-12-18 08:47:27',
                 'permission_key' => null,
             ],
+            [
+                'id' => 45,
+                'parent_id' => 21,
+                'name' => '문의 관리',
+                'url' => '/backoffice/contacts',
+                'icon' => null,
+                'order' => 3,
+                'is_active' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'permission_key' => null,
+            ],
         ];
 
         // parent_id가 null인 메뉴들을 먼저 생성
-        $parentMenus = array_filter($menus, function($menu) {
+        $parentMenus = array_filter($menus, function ($menu) {
             return $menu['parent_id'] === null;
         });
-        
+
         foreach ($parentMenus as $menu) {
             AdminMenu::create($menu);
         }
-        
+
         // 그 다음에 자식 메뉴들을 생성
-        $childMenus = array_filter($menus, function($menu) {
+        $childMenus = array_filter($menus, function ($menu) {
             return $menu['parent_id'] !== null;
         });
-        
+
         foreach ($childMenus as $menu) {
             AdminMenu::create($menu);
         }

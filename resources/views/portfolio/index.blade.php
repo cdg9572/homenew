@@ -35,7 +35,7 @@
 <main class="sub_contents_wrap">
 
 	<section class="svisual g{{ $gNum }}" aria-labelledby="sub-visual-title">
-		<div class="bg_box">
+		<div class="bg_box mojo_aos">
 			<div class="inner">
 				{{-- 현재 위치 정보를 제공하는 내비게이션 --}}
 				<nav class="location" aria-label="현재 위치">
@@ -54,7 +54,7 @@
 		<div class="inner">
 			<h2 id="Portfolio-list" class="sound_only">전체 포트폴리오 목록</h2>
 			
-			<div class="board_top">
+			<div class="board_top mojo_aos">
 				<nav aria-label="포트폴리오 카테고리 필터">
 					<ul class="tabs">
 						<li class="on"><a href="/portfolio/" aria-current="page">전체</a></li>
@@ -77,8 +77,8 @@
 				</div>
 			</div>
 			
-			<ul class="portfolio_list">
-				<li>
+			<ul class="portfolio_list mojo_aos">
+				<li data-aos="fade-up">
 					<a href="/portfolio/view" class="box" aria-label="한국폐기물협회 생활폐기물 분리배출 누리집 신규 구축 (WEB UI/UX / 연간 운영 · 유지보수) 포트폴리오 보기">
 						<span class="img_area" aria-hidden="true">
 							<span class="imgfit"><img src="/images/img_portfolio_sample.png" alt=""></span>
@@ -94,7 +94,7 @@
 						</span>
 					</a>
 				</li>
-				<li>
+				<li data-aos="fade-up">
 					<a href="/portfolio/view" class="box" aria-label="한국폐기물협회 생활폐기물 분리배출 누리집 신규 구축 (WEB UI/UX / 연간 운영 · 유지보수) 포트폴리오 보기">
 						<span class="img_area" aria-hidden="true">
 							<span class="imgfit"><img src="/images/img_portfolio_sample.png" alt=""></span>
@@ -110,7 +110,7 @@
 						</span>
 					</a>
 				</li>
-				<li>
+				<li data-aos="fade-up">
 					<a href="/portfolio/view" class="box" aria-label="한국폐기물협회 생활폐기물 분리배출 누리집 신규 구축 (WEB UI/UX / 연간 운영 · 유지보수) 포트폴리오 보기">
 						<span class="img_area" aria-hidden="true">
 							<span class="imgfit"><img src="/images/img_portfolio_sample.png" alt=""></span>
@@ -126,7 +126,7 @@
 						</span>
 					</a>
 				</li>
-				<li>
+				<li data-aos="fade-up">
 					<a href="/portfolio/view" class="box" aria-label="한국폐기물협회 생활폐기물 분리배출 누리집 신규 구축 (WEB UI/UX / 연간 운영 · 유지보수) 포트폴리오 보기">
 						<span class="img_area" aria-hidden="true">
 							<span class="imgfit"><img src="/images/img_portfolio_sample.png" alt=""></span>
@@ -142,7 +142,7 @@
 						</span>
 					</a>
 				</li>
-				<li>
+				<li data-aos="fade-up">
 					<a href="/portfolio/view" class="box" aria-label="한국폐기물협회 생활폐기물 분리배출 누리집 신규 구축 (WEB UI/UX / 연간 운영 · 유지보수) 포트폴리오 보기">
 						<span class="img_area" aria-hidden="true">
 							<span class="imgfit"><img src="/images/img_portfolio_sample.png" alt=""></span>
@@ -158,7 +158,7 @@
 						</span>
 					</a>
 				</li>
-				<li>
+				<li data-aos="fade-up">
 					<a href="/portfolio/view" class="box" aria-label="한국폐기물협회 생활폐기물 분리배출 누리집 신규 구축 (WEB UI/UX / 연간 운영 · 유지보수) 포트폴리오 보기">
 						<span class="img_area" aria-hidden="true">
 							<span class="imgfit"><img src="/images/img_portfolio_sample.png" alt=""></span>
@@ -174,7 +174,7 @@
 						</span>
 					</a>
 				</li>
-				<li>
+				<li data-aos="fade-up">
 					<a href="/portfolio/view" class="box" aria-label="한국폐기물협회 생활폐기물 분리배출 누리집 신규 구축 (WEB UI/UX / 연간 운영 · 유지보수) 포트폴리오 보기">
 						<span class="img_area" aria-hidden="true">
 							<span class="imgfit"><img src="/images/img_portfolio_sample.png" alt=""></span>
@@ -190,7 +190,7 @@
 						</span>
 					</a>
 				</li>
-				<li>
+				<li data-aos="fade-up">
 					<a href="/portfolio/view" class="box" aria-label="한국폐기물협회 생활폐기물 분리배출 누리집 신규 구축 (WEB UI/UX / 연간 운영 · 유지보수) 포트폴리오 보기">
 						<span class="img_area" aria-hidden="true">
 							<span class="imgfit"><img src="/images/img_portfolio_sample.png" alt=""></span>
@@ -206,7 +206,7 @@
 						</span>
 					</a>
 				</li>
-				<li>
+				<li data-aos="fade-up">
 					<a href="/portfolio/view" class="box" aria-label="한국폐기물협회 생활폐기물 분리배출 누리집 신규 구축 (WEB UI/UX / 연간 운영 · 유지보수) 포트폴리오 보기">
 						<span class="img_area" aria-hidden="true">
 							<span class="imgfit"><img src="/images/img_portfolio_sample.png" alt=""></span>
@@ -222,7 +222,7 @@
 						</span>
 					</a>
 				</li>
-				<li>
+				<li data-aos="fade-up">
 					<a href="/portfolio/view" class="box" aria-label="한국폐기물협회 생활폐기물 분리배출 누리집 신규 구축 (WEB UI/UX / 연간 운영 · 유지보수) 포트폴리오 보기">
 						<span class="img_area" aria-hidden="true">
 							<span class="imgfit"><img src="/images/img_portfolio_sample.png" alt=""></span>
@@ -238,7 +238,7 @@
 						</span>
 					</a>
 				</li>
-				<li>
+				<li data-aos="fade-up">
 					<a href="/portfolio/view" class="box" aria-label="한국폐기물협회 생활폐기물 분리배출 누리집 신규 구축 (WEB UI/UX / 연간 운영 · 유지보수) 포트폴리오 보기">
 						<span class="img_area" aria-hidden="true">
 							<span class="imgfit"><img src="/images/img_portfolio_sample.png" alt=""></span>
@@ -254,7 +254,7 @@
 						</span>
 					</a>
 				</li>
-				<li>
+				<li data-aos="fade-up">
 					<a href="/portfolio/view" class="box" aria-label="한국폐기물협회 생활폐기물 분리배출 누리집 신규 구축 (WEB UI/UX / 연간 운영 · 유지보수) 포트폴리오 보기">
 						<span class="img_area" aria-hidden="true">
 							<span class="imgfit"><img src="/images/img_portfolio_sample.png" alt=""></span>
@@ -286,4 +286,14 @@
 	</section>
 
 </main>
+
+<script>
+$(document).ready(function(){
+// AOS
+	AOS.init({
+		duration: 2000,
+	});
+});
+</script>
+
 @endsection

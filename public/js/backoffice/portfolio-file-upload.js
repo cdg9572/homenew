@@ -2,8 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const uploadConfigs = [
     { inputId: 'thumbnail_image', previewId: 'thumbnailPreview', maxFiles: 1 },
     { inputId: 'solution_before_image', previewId: 'beforeImagePreview', maxFiles: 1 },
-    { inputId: 'solution_after_image', previewId: 'afterImagePreview', maxFiles: 1 },
-    { inputId: 'feature_images', previewId: 'featureImagePreview', maxFiles: 5 }
+    { inputId: 'solution_after_image', previewId: 'afterImagePreview', maxFiles: 1 }
   ];
 
   uploadConfigs.forEach(({ inputId, previewId, maxFiles }) => {

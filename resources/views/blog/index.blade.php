@@ -224,8 +224,6 @@
 
 </main>
 
-<link href="/css/aos.css" rel="stylesheet">
-<script src="/js/aos.js"></script>
 <script>
 //AOS
 	AOS.init({

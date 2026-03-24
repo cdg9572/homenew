@@ -11,13 +11,12 @@ use Illuminate\Validation\Rule;
 
 class PortfolioController extends Controller
 {
-    public function __construct(private PortfolioService $portfolioService)
-    {
-    }
+    public function __construct(private PortfolioService $portfolioService) {}
 
     public function index(Request $request)
     {
         $portfolios = $this->portfolioService->getPortfolios($request);
+
         return view('backoffice.portfolio.index', [
             'portfolios' => $portfolios,
             'categories' => Portfolio::CATEGORIES,
@@ -42,7 +41,8 @@ class PortfolioController extends Controller
 
     public function edit(Portfolio $portfolio)
     {
-        $portfolio->load(['featureImages', 'reviews']);
+        $portfolio->load(['featureImages', 'featureDevelopments', 'reviews']);
+
         return view('backoffice.portfolio.edit', [
             'portfolio' => $portfolio,
             'categories' => Portfolio::CATEGORIES,
@@ -61,12 +61,14 @@ class PortfolioController extends Controller
     public function destroy(Portfolio $portfolio)
     {
         $this->portfolioService->delete($portfolio);
+
         return redirect()->route('backoffice.portfolio.index')->with('success', '포트폴리오가 삭제되었습니다.');
     }
 
     public function updateOrder(Request $request)
     {
         $this->portfolioService->updateOrder($request->input('portfolioOrder', []));
+
         return response()->json(['success' => true]);
     }
 
@@ -87,7 +89,8 @@ class PortfolioController extends Controller
     private function validateRequest(Request $request, ?Portfolio $portfolio = null): array
     {
         return $request->validate([
-            'category' => ['required', Rule::in(Portfolio::CATEGORIES), Rule::unique('portfolios', 'category')->ignore($portfolio?->id)],
+            'categories' => ['required', 'array', 'min:1'],
+            'categories.*' => ['string', Rule::in(Portfolio::CATEGORIES)],
             'development_summary' => 'nullable|string|max:255',
             'title' => 'required|string|max:255',
             'keywords_input' => 'nullable|string|max:1000',
@@ -104,24 +107,36 @@ class PortfolioController extends Controller
             'solution_content' => 'nullable|string',
             'solution_before_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
             'solution_after_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
-            'feature_title' => 'nullable|string|max:255',
-            'feature_content' => 'nullable|string',
-            'feature_images.*' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
+            'feature_developments' => 'nullable|array',
+            'feature_developments.*.title' => 'nullable|string|max:255',
+            'feature_developments.*.content' => 'nullable|string',
+            'feature_developments.*.existing_image_path' => 'nullable|string|max:255',
+            'feature_developments.*.remove_image' => 'nullable|boolean',
+            'feature_developments.*.image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
             'reviews.*.title' => 'nullable|string|max:255',
             'reviews.*.manager_name' => 'nullable|string|max:255',
             'reviews.*.content' => 'nullable|string',
+            'remove_thumbnail_image' => 'nullable|boolean',
+            'remove_solution_before_image' => 'nullable|boolean',
+            'remove_solution_after_image' => 'nullable|boolean',
         ]);
     }
 
     private function preparePayload(Request $request, array $validated, ?Portfolio $portfolio = null): array
     {
         $payload = $validated;
+        $categories = array_values(array_unique($request->input('categories', [])));
+        $payload['categories'] = $categories;
+        $payload['category'] = $categories[0] ?? null;
         $payload['keywords'] = $this->parseKeywords($request->input('keywords_input'));
         $payload['is_main_display'] = $request->boolean('is_main_display');
         $payload['is_active'] = $request->boolean('is_active', true);
         unset($payload['keywords_input']);
 
-        if ($request->hasFile('thumbnail_image')) {
+        if ($request->boolean('remove_thumbnail_image') && $portfolio?->thumbnail_image) {
+            Storage::disk('public')->delete($portfolio->thumbnail_image);
+            $payload['thumbnail_image'] = null;
+        } elseif ($request->hasFile('thumbnail_image')) {
             if ($portfolio?->thumbnail_image) {
                 Storage::disk('public')->delete($portfolio->thumbnail_image);
             }
@@ -130,7 +145,10 @@ class PortfolioController extends Controller
             $payload['thumbnail_image'] = $portfolio->thumbnail_image;
         }
 
-        if ($request->hasFile('solution_before_image')) {
+        if ($request->boolean('remove_solution_before_image') && $portfolio?->solution_before_image) {
+            Storage::disk('public')->delete($portfolio->solution_before_image);
+            $payload['solution_before_image'] = null;
+        } elseif ($request->hasFile('solution_before_image')) {
             if ($portfolio?->solution_before_image) {
                 Storage::disk('public')->delete($portfolio->solution_before_image);
             }
@@ -139,7 +157,10 @@ class PortfolioController extends Controller
             $payload['solution_before_image'] = $portfolio->solution_before_image;
         }
 
-        if ($request->hasFile('solution_after_image')) {
+        if ($request->boolean('remove_solution_after_image') && $portfolio?->solution_after_image) {
+            Storage::disk('public')->delete($portfolio->solution_after_image);
+            $payload['solution_after_image'] = null;
+        } elseif ($request->hasFile('solution_after_image')) {
             if ($portfolio?->solution_after_image) {
                 Storage::disk('public')->delete($portfolio->solution_after_image);
             }
@@ -148,28 +169,38 @@ class PortfolioController extends Controller
             $payload['solution_after_image'] = $portfolio->solution_after_image;
         }
 
-        $storedFeatureImages = [];
-        if ($request->hasFile('feature_images')) {
-            foreach ($request->file('feature_images') as $image) {
-                if (count($storedFeatureImages) >= 5) {
-                    break;
-                }
-                if ($image) {
-                    $storedFeatureImages[] = $image->store('portfolio/features', 'public');
-                }
+        $featureDevelopments = [];
+        $featureRows = $request->input('feature_developments', []);
+        foreach ($featureRows as $idx => $row) {
+            $title = trim((string) ($row['title'] ?? ''));
+            $content = trim((string) ($row['content'] ?? ''));
+            $existingImagePath = $row['existing_image_path'] ?? null;
+            $removeExistingImage = filter_var($row['remove_image'] ?? false, FILTER_VALIDATE_BOOLEAN);
+            $uploadedImagePath = null;
+
+            if ($request->hasFile("feature_developments.$idx.image")) {
+                $uploadedImagePath = $request->file("feature_developments.$idx.image")->store('portfolio/features', 'public');
             }
-        } elseif ($portfolio) {
-            $storedFeatureImages = $portfolio->featureImages->pluck('image_path')->toArray();
-            $payload['feature_images_keep_existing'] = true;
+
+            $imagePath = $removeExistingImage ? null : ($uploadedImagePath ?? $existingImagePath);
+            if ($title === '' && $content === '' && ! $imagePath) {
+                continue;
+            }
+
+            $featureDevelopments[] = [
+                'title' => $title !== '' ? $title : null,
+                'content' => $content !== '' ? $content : null,
+                'image_path' => $imagePath,
+            ];
         }
-        $payload['feature_images'] = array_slice($storedFeatureImages, 0, 5);
+        $payload['feature_developments'] = $featureDevelopments;
 
         return $payload;
     }
 
     private function parseKeywords(?string $input): array
     {
-        if (!$input) {
+        if (! $input) {
             return [];
         }
 
@@ -180,8 +211,8 @@ class PortfolioController extends Controller
             if ($word === '') {
                 continue;
             }
-            if (!str_starts_with($word, '#')) {
-                $word = '#' . $word;
+            if (! str_starts_with($word, '#')) {
+                $word = '#'.$word;
             }
             $keywords[] = $word;
         }

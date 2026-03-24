@@ -11,17 +11,17 @@ class PortfolioService
 {
     public function getPortfolios(Request $request)
     {
-        $query = Portfolio::query()->with(['featureImages', 'reviews']);
+        $query = Portfolio::query()->with(['featureDevelopments', 'reviews']);
 
         if ($request->filled('category')) {
-            $query->where('category', $request->category);
+            $query->whereJsonContains('categories', $request->category);
         }
         if ($request->filled('keyword')) {
-            $query->where('title', 'like', '%' . $request->keyword . '%');
+            $query->where('title', 'like', '%'.$request->keyword.'%');
         }
 
         $perPage = (int) $request->get('per_page', 10);
-        if (!in_array($perPage, [10, 20, 50, 100], true)) {
+        if (! in_array($perPage, [10, 20, 50, 100], true)) {
             $perPage = 10;
         }
 
@@ -33,7 +33,8 @@ class PortfolioService
         return DB::transaction(function () use ($data) {
             $portfolio = Portfolio::create($this->mapPortfolioData($data));
             $this->syncReviews($portfolio, $data['reviews'] ?? []);
-            $this->syncFeatureImages($portfolio, $data['feature_images'] ?? []);
+            $this->syncFeatureDevelopments($portfolio, $data['feature_developments'] ?? []);
+
             return $portfolio;
         });
     }
@@ -43,12 +44,9 @@ class PortfolioService
         return DB::transaction(function () use ($portfolio, $data) {
             $portfolio->update($this->mapPortfolioData($data));
             $this->syncReviews($portfolio, $data['reviews'] ?? []);
-            $this->syncFeatureImages(
-                $portfolio,
-                $data['feature_images'] ?? [],
-                (bool) ($data['feature_images_keep_existing'] ?? false)
-            );
-            return $portfolio->fresh(['featureImages', 'reviews']);
+            $this->syncFeatureDevelopments($portfolio, $data['feature_developments'] ?? []);
+
+            return $portfolio->fresh(['featureDevelopments', 'reviews']);
         });
     }
 
@@ -62,13 +60,18 @@ class PortfolioService
         foreach ($portfolio->featureImages as $image) {
             Storage::disk('public')->delete($image->image_path);
         }
+        foreach ($portfolio->featureDevelopments as $featureDevelopment) {
+            if ($featureDevelopment->image_path) {
+                Storage::disk('public')->delete($featureDevelopment->image_path);
+            }
+        }
         $portfolio->delete();
     }
 
     public function updateOrder(array $payload): void
     {
         foreach ($payload as $row) {
-            if (!isset($row['id'], $row['order'])) {
+            if (! isset($row['id'], $row['order'])) {
                 continue;
             }
             Portfolio::where('id', $row['id'])->update(['sort_order' => (int) $row['order']]);
@@ -90,6 +93,7 @@ class PortfolioService
     {
         return [
             'category' => $data['category'],
+            'categories' => $data['categories'] ?? [],
             'development_summary' => $data['development_summary'] ?? null,
             'title' => $data['title'],
             'keywords' => $data['keywords'] ?? [],
@@ -106,8 +110,6 @@ class PortfolioService
             'solution_content' => $data['solution_content'] ?? null,
             'solution_before_image' => $data['solution_before_image'] ?? null,
             'solution_after_image' => $data['solution_after_image'] ?? null,
-            'feature_title' => $data['feature_title'] ?? null,
-            'feature_content' => $data['feature_content'] ?? null,
         ];
     }
 
@@ -127,24 +129,29 @@ class PortfolioService
         }
     }
 
-    private function syncFeatureImages(Portfolio $portfolio, array $featureImages, bool $keepExistingFiles = false): void
+    private function syncFeatureDevelopments(Portfolio $portfolio, array $featureDevelopments): void
     {
-        if (!$keepExistingFiles) {
-            foreach ($portfolio->featureImages as $image) {
-                Storage::disk('public')->delete($image->image_path);
+        foreach ($portfolio->featureDevelopments as $featureDevelopment) {
+            if ($featureDevelopment->image_path) {
+                Storage::disk('public')->delete($featureDevelopment->image_path);
             }
         }
-        $portfolio->featureImages()->delete();
+        $portfolio->featureDevelopments()->delete();
 
-        foreach (array_values($featureImages) as $idx => $imagePath) {
-            if (!$imagePath) {
+        foreach (array_values($featureDevelopments) as $idx => $featureDevelopment) {
+            if (
+                empty($featureDevelopment['title']) &&
+                empty($featureDevelopment['content']) &&
+                empty($featureDevelopment['image_path'])
+            ) {
                 continue;
             }
-            $portfolio->featureImages()->create([
-                'image_path' => $imagePath,
+            $portfolio->featureDevelopments()->create([
+                'title' => $featureDevelopment['title'] ?? null,
+                'content' => $featureDevelopment['content'] ?? null,
+                'image_path' => $featureDevelopment['image_path'] ?? null,
                 'sort_order' => $idx,
             ]);
         }
     }
 }
-

@@ -1,0 +1,30 @@
+<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_1090_8737" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="0" width="32" height="34">
+<g clip-path="url(#clip0_1090_8737)">
+<path d="M26.0142 16.4545C25.9552 19.3802 24.5373 21.9606 22.3763 23.5788C21.3983 24.3112 20.7907 25.4425 20.7907 26.6755V29.8541C20.7907 31.3463 19.5984 32.5552 18.1267 32.5552H15.975C14.5033 32.5552 13.311 31.3463 13.311 29.8541V26.5905C13.311 25.432 12.7697 24.3375 11.8393 23.6648C9.56026 22.0183 8.07715 19.3214 8.07715 16.2646C8.07715 11.1299 12.2802 6.99118 17.3753 7.17587C22.1952 7.35112 26.1125 11.5654 26.0142 16.4545Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20.7913 26.7949H13.3115" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28.8662 16.2637H31.6606" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2.44141 16.2637H5.23583" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M25.4062 7.79429L27.382 5.79102" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6.7207 26.7396L8.69646 24.7363" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.69646 7.79429L6.7207 5.79102" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.382 26.7396L25.4062 24.7363" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17.0508 4.28451V1.45117" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18.4317 18.9353L15.7315 13.043L13.0312 18.9353" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17.5952 17.1172H13.8662" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20.0488 13.043V18.9353" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</mask>
+<g mask="url(#mask0_1090_8737)">
+<rect width="34" height="34" fill="url(#paint0_linear_1090_8737)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_1090_8737" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF6900"/>
+<stop offset="1" stop-color="#FFC7A0"/>
+</linearGradient>
+<clipPath id="clip0_1090_8737">
+<rect width="32" height="34" fill="white" transform="translate(1)"/>
+</clipPath>
+</defs>
+</svg>

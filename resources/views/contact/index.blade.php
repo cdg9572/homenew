@@ -30,7 +30,7 @@
 @endsection
 
 @section('content')
-<main class="sub_contents_wrap">
+<main class="sub_contents_wrap" id="contact_page_root" data-contact-success="{{ session('contact_submitted') ? '1' : '0' }}">
 
 	<section class="svisual g{{ $gNum }}" aria-labelledby="sub-visual-title" data-header="light">
 		<div class="bg_box mojo_aos">
@@ -61,47 +61,106 @@
 					</ul>
 				</div>
 				<div class="con mojo_aos">
-					<form action="#" method="post" novalidate id="contact_form">
+					<form action="{{ route('contact.store') }}" method="post" enctype="multipart/form-data" novalidate id="contact_form">
+						@csrf
+						@php
+							$hasServiceError = $errors->has('service')
+								|| collect($errors->keys())->contains(fn ($k) => str_starts_with((string) $k, 'service.'));
+						@endphp
 						<div class="flex">
 							<dl class="w100p">
 								<dt><label for="input1">소속<i aria-hidden="true">*</i><span class="sound_only">(필수)</span></label></dt>
-								<dd><input type="text" id="input1" name="company" class="text w100p" placeholder="소속을 입력해주세요." required aria-required="true"></dd>
+								<dd>
+									<input type="text" id="input1" name="company" class="text w100p" placeholder="소속을 입력해주세요." value="{{ old('company') }}" required aria-required="true" autocomplete="organization" @if($errors->has('company')) aria-invalid="true" @endif>
+									@error('company')
+										<p class="contact_field_error" role="alert">{{ $message }}</p>
+									@enderror
+								</dd>
 							</dl>
 							<dl>
 								<dt><label for="input2">담당자 성함<i aria-hidden="true">*</i><span class="sound_only">(필수)</span></label></dt>
-								<dd><input type="text" id="input2" name="name" class="text w100p" placeholder="담당자 성함을 입력해주세요." required aria-required="true"></dd>
+								<dd>
+									<input type="text" id="input2" name="contact_person" class="text w100p" placeholder="담당자 성함을 입력해주세요." value="{{ old('contact_person') }}" required aria-required="true" autocomplete="name" @if($errors->has('contact_person')) aria-invalid="true" @endif>
+									@error('contact_person')
+										<p class="contact_field_error" role="alert">{{ $message }}</p>
+									@enderror
+								</dd>
 							</dl>
 							<dl>
 								<dt><label for="input3">이메일<i aria-hidden="true">*</i><span class="sound_only">(필수)</span></label></dt>
-								<dd><input type="email" id="input3" name="email" class="text w100p" placeholder="이메일을 입력해주세요." required aria-required="true"></dd>
+								<dd>
+									<input type="email" id="input3" name="email" class="text w100p" placeholder="이메일을 입력해주세요." value="{{ old('email') }}" required aria-required="true" autocomplete="email" @if($errors->has('email')) aria-invalid="true" @endif>
+									@error('email')
+										<p class="contact_field_error" role="alert">{{ $message }}</p>
+									@enderror
+								</dd>
 							</dl>
-							<fieldset class="w100p">
+							<fieldset class="w100p" @if($hasServiceError) aria-describedby="contact_err_service" @endif>
 								<legend class="dt_tit">관심 서비스 <span>(중복선택)</span> <i aria-hidden="true">*</i><span class="sound_only">(필수)</span></legend>
 								<div class="checks">
-									<label class="check"><input type="checkbox" name="service[]" value="홈페이지 제작"><i aria-hidden="true"></i>홈페이지 제작</label>
-									<label class="check"><input type="checkbox" name="service[]" value="홈페이지 유지보수"><i aria-hidden="true"></i>홈페이지 유지보수</label>
-									<label class="check"><input type="checkbox" name="service[]" value="온라인 쇼핑몰 제작"><i aria-hidden="true"></i>온라인 쇼핑몰 제작</label>
-									<label class="check"><input type="checkbox" name="service[]" value="시스템 개발"><i aria-hidden="true"></i>시스템 개발(예약/ERP/CMS 등)</label>
-									<label class="check"><input type="checkbox" name="service[]" value="앱 개발"><i aria-hidden="true"></i>앱 개발</label>
-									<label class="check"><input type="checkbox" name="service[]" value="맞춤형 AI 솔루션"><i aria-hidden="true"></i>맞춤형 AI 솔루션</label>
+									@php $oldServices = old('service', []); @endphp
+									<label class="check"><input type="checkbox" name="service[]" value="홈페이지 제작" @checked(in_array('홈페이지 제작', $oldServices, true))><i aria-hidden="true"></i>홈페이지 제작</label>
+									<label class="check"><input type="checkbox" name="service[]" value="홈페이지 유지보수" @checked(in_array('홈페이지 유지보수', $oldServices, true))><i aria-hidden="true"></i>홈페이지 유지보수</label>
+									<label class="check"><input type="checkbox" name="service[]" value="온라인 쇼핑몰 제작" @checked(in_array('온라인 쇼핑몰 제작', $oldServices, true))><i aria-hidden="true"></i>온라인 쇼핑몰 제작</label>
+									<label class="check"><input type="checkbox" name="service[]" value="시스템 개발" @checked(in_array('시스템 개발', $oldServices, true))><i aria-hidden="true"></i>시스템 개발(예약/ERP/CMS 등)</label>
+									<label class="check"><input type="checkbox" name="service[]" value="앱 개발" @checked(in_array('앱 개발', $oldServices, true))><i aria-hidden="true"></i>앱 개발</label>
+									<label class="check"><input type="checkbox" name="service[]" value="맞춤형 AI 솔루션" @checked(in_array('맞춤형 AI 솔루션', $oldServices, true))><i aria-hidden="true"></i>맞춤형 AI 솔루션</label>
 								</div>
+								@php
+									$serviceErrMessage = $errors->first('service');
+									if ($serviceErrMessage === null || $serviceErrMessage === '') {
+										foreach (range(0, 5) as $si) {
+											if ($errors->has('service.'.$si)) {
+												$serviceErrMessage = $errors->first('service.'.$si);
+												break;
+											}
+										}
+									}
+								@endphp
+								@if ($serviceErrMessage !== null && $serviceErrMessage !== '')
+									<p class="contact_field_error" id="contact_err_service" role="alert">{{ $serviceErrMessage }}</p>
+								@endif
 							</fieldset>
 							<dl class="w100p">
 								<dt><label for="input5">현재 사이트가 있는 경우 알려주세요.</label></dt>
-								<dd><input type="url" id="input5" name="current_site" class="text w100p" placeholder="사이트주소를 입력해주세요."></dd>
+								<dd>
+									<input type="text" id="input5" name="current_site" class="text w100p" placeholder="사이트주소를 입력해주세요." value="{{ old('current_site') }}" autocomplete="url" @if($errors->has('current_site')) aria-invalid="true" @endif>
+									@error('current_site')
+										<p class="contact_field_error" role="alert">{{ $message }}</p>
+									@enderror
+								</dd>
 							</dl>
 							<dl class="w100p">
 								<dt><label for="input6">어떤 문의가 있으신가요?</label></dt>
-								<dd><textarea name="" id="" cols="30" rows="10" class="text w100p" placeholder="문의 내용을 입력해주세요."></textarea></dd>
-								<!-- (에디터) -->
+								<dd>
+									<textarea name="message" id="input6" cols="30" rows="10" class="text w100p" placeholder="문의 내용을 입력해주세요." @if($errors->has('message')) aria-invalid="true" @endif>{{ old('message') }}</textarea>
+									@error('message')
+										<p class="contact_field_error" role="alert">{{ $message }}</p>
+									@enderror
+								</dd>
 							</dl>
 							<dl class="w100p">
-								<dt><label for="input7">첨부파일<span>(최대 3개까지 첨부 가능)</span></label><label class="btn_file"><input type="file" name="btn_file" id="input7" multiple><span>파일선택</span></label></dt>
-								<dd class="input_files"></dd>
+								<dt><label for="contact_file_input">첨부파일<span>(최대 3개까지 첨부 가능)</span></label><label class="btn_file"><input type="file" name="attachments[]" id="contact_file_input" multiple accept=".pdf,.jpg,.jpeg,.png,.gif,.webp,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip"><span>파일선택</span></label></dt>
+								<dd>
+									<div class="input_files contact_input_files"></div>
+									@error('attachments')
+										<p class="contact_field_error" role="alert">{{ $message }}</p>
+									@enderror
+									@for ($i = 0; $i < 3; $i++)
+										@error('attachments.'.$i)
+											<p class="contact_field_error" role="alert">{{ $message }}</p>
+										@enderror
+									@endfor
+								</dd>
 							</dl>
 							<dl class="w100p">
 								<dt><label for="input8">프로젝트 예산</label></dt>
-								<dd><input type="text" id="input7" name="budget" class="text w100p" placeholder="프로젝트 예산을 입력해주세요."></dd>
+								<dd>
+									<input type="text" id="input8" name="budget" class="text w100p" placeholder="프로젝트 예산을 입력해주세요." value="{{ old('budget') }}" @if($errors->has('budget')) aria-invalid="true" @endif>
+									@error('budget')
+										<p class="contact_field_error" role="alert">{{ $message }}</p>
+									@enderror
+								</dd>
 							</dl>
 						</div>
 						<button type="submit" class="btn_submit">문의 접수하기</button>
@@ -122,97 +181,8 @@
 	</div>
 
 </main>
-
-
-<script>
-//첨부파일
-	(function () {
-		const MAX_FILES = 3;
-		let attachedFiles = [];
-		$('#input7').on('change', function () {
-			const newFiles = Array.from(this.files);
-			const available = MAX_FILES - attachedFiles.length;
-			if (available <= 0) {
-				alert('파일은 최대 3개까지 첨부 가능합니다.');
-				$(this).val('');
-				return;
-			}
-			const addFiles = newFiles.slice(0, available);
-			if (newFiles.length > available) {
-				alert(`최대 ${MAX_FILES}개까지 첨부 가능합니다. ${available}개만 추가됩니다.`);
-			}
-			addFiles.forEach(function (file) {
-				const isDuplicate = attachedFiles.some(f => f.name === file.name);
-				if (isDuplicate) return;
-				attachedFiles.push(file);
-				renderFile(file);
-			});
-			$(this).val('');
-		});
-		function renderFile(file) {
-			const $btn = $('<button>', {
-				type: 'button',
-				class: 'file',
-				text: file.name,
-				'aria-label': file.name + ' 삭제'
-			});
-			$btn.on('click', function () {
-				attachedFiles = attachedFiles.filter(f => f.name !== file.name);
-				$(this).remove();
-			});
-
-			$('.input_files').append($btn);
-		}
-	})();
-//접수 완료 팝업
-	$('#contact_form').on('submit', function(e) {
-		e.preventDefault();
-		openPopup('popup_complete').addClass("on");
-	});
-
-	let $lastFocus;
-	function openPopup(id) {
-		$lastFocus = $(document.activeElement);
-		const $popup = $('#' + id);
-		$popup.removeAttr('hidden').attr('aria-hidden', 'false');
-		$('body').attr('aria-hidden', 'true');
-		$popup.find('.btn_close').focus();
-	}
-	function closePopup(id) {
-		const $popup = $('#' + id);
-		$popup.attr('hidden', true).attr('aria-hidden', 'true');
-		$('body').removeAttr('aria-hidden');
-		if ($lastFocus) $lastFocus.focus();
-	}
-	$(document).on('click', '.popup .btn_close', function () {
-		closePopup($(this).closest('.popup').attr('id'));
-	});
-	$(document).on('click', '.popup .dm', function () {
-		closePopup($(this).closest('.popup').attr('id'));
-	});
-	$(document).on('keydown', function (e) {
-		if (e.key === 'Escape') {
-			const $openPopup = $('.popup:not([hidden])');
-			if ($openPopup.length) closePopup($openPopup.attr('id'));
-		}
-	});
-	$(document).on('keydown', '.popup', function (e) {
-		if (e.key !== 'Tab') return;
-		const $focusable = $(this).find('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])').filter(':visible');
-		const $first = $focusable.first();
-		const $last  = $focusable.last();
-		if (e.shiftKey) {
-			if ($(document.activeElement).is($first)) {
-				$last.focus();
-				e.preventDefault();
-			}
-		} else {
-			if ($(document.activeElement).is($last)) {
-				$first.focus();
-				e.preventDefault();
-			}
-		}
-	});
-</script>
-
 @endsection
+
+@push('scripts')
+<script src="{{ asset('js/contact-form.js') }}"></script>
+@endpush
